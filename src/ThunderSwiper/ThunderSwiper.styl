@@ -1,0 +1,44 @@
+.thunder_swiper
+  width 80vw
+  height 40vw
+  position fixed
+  top 50%
+  left 50%
+  margin-left -40vw
+  margin-top -20vw
+  background white
+
+  &_previous
+    float left
+    width 10%
+    height 100%
+    background red
+
+  &_content
+    float left
+    width 80%
+    height 100%
+    background white
+
+  &_next
+    float right
+    width 10%
+    height 100%
+    background red
+
+.swiper_animation-enter
+  opacity 0
+
+.swiper_animation-enter.swiper_animation-enter-active
+  opacity 1
+  transition opacity 300ms ease-in
+
+
+.swiper_animation-leave
+  opacity 0
+
+
+
+
+
+
