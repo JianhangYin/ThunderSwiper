@@ -4,41 +4,146 @@
   position fixed
   top 50%
   left 50%
-  margin-left -40vw
-  margin-top -20vw
-  background white
+  margin-left -(@width / 2)
+  margin-top -(@height / 2)
+
+  &_content_default
+    position absolute
+    top 0
+    left -70%
+    right -70%
+    width 240%
+    height 100%
+
+    &_previous
+      position absolute
+      top 0
+      left 0
+      width 33%
+      height 100%
+      opacity 0.5
+
+    &_current
+      position absolute
+      top 0
+      left 33.5%
+      width 33%
+      height 100%
+
+    &_next
+      position absolute
+      top 0
+      right 0
+      width 33%
+      height 100%
+      opacity 0.5
+
+  &_content_vertical
+    position absolute
+    top -100%
+    left 10%
+    right 10%
+    width 80%
+    height 300%
+
+    &_previous
+      position absolute
+      top 0
+      left 0
+      width 100%
+      height 33%
+      opacity 0.5
+
+    &_current
+      position absolute
+      top 33.5%
+      left 0
+      width 100%
+      height 33%
+
+    &_next
+      position absolute
+      top 67%
+      left 0
+      width 100%
+      height 33%
+      opacity 0.5
 
   &_previous
-    float left
+    position absolute
+    top 0
+    left 0
     width 10%
     height 100%
     background red
 
-  &_content
-    float left
+  &_content_navigation
+    position absolute
+    left 10%
     width 80%
     height 100%
     background white
 
   &_next
-    float right
+    position absolute
+    top 0
+    right 0
     width 10%
     height 100%
     background red
 
-.swiper_animation-enter
+.swiper_navigation_animation-enter
   opacity 0
-
-.swiper_animation-enter.swiper_animation-enter-active
+.swiper_navigation_animation-enter.swiper_navigation_animation-enter-active
   opacity 1
   transition opacity 300ms ease-in
-
-
-.swiper_animation-leave
+.swiper_navigation_animation-leave
   opacity 0
 
+.swiper_default_left_animation-enter
+  transform translateX(50vw)
+.swiper_default_left_animation-enter.swiper_default_left_animation-enter-active
+  transform translateX(0)
+  transition transform  300ms ease-in
+.swiper_default_left_animation-leave
+  transform translateX(0)
+.swiper_default_left_animation-leave.swiper_default_left_animation-leave-active
+  transform translateX(-50vw)
+  transition transform  300ms ease-in
 
 
+.swiper_default_right_animation-enter
+  transform translateX(-50vw)
+.swiper_default_right_animation-enter.swiper_default_right_animation-enter-active
+  transform translateX(0)
+  transition transform  300ms ease-in
+.swiper_default_right_animation-leave
+  transform translateX(0)
+.swiper_default_right_animation-leave.swiper_default_right_animation-leave-active
+  transform translateX(50vw)
+  transition transform  300ms ease-in
 
+.swiper_vertical_up_animation-enter
+transform translateY(-50vh)
+.swiper_vertical_up_animation-enter.swiper_vertical_up_animation-enter-active
+  transform translateY(0)
+  transition transform  300ms ease-in
+.swiper_vertical_up_animation-leave
+  transform translateY(0)
+.swiper_vertical_up_animation-leave.swiper_vertical_up_animation-leave-active
+  transform translateY(50vh)
+  transition transform  300ms ease-in
+
+
+.swiper_vertical_down_animation-enter
+  transform translateY(50vh)
+.swiper_vertical_down_animation-enter.swiper_vertical_down_animation-enter-active
+  transform translateY(0)
+  transition transform  300ms ease-in
+.swiper_vertical_down_animation-leave
+  transform translateY(0)
+.swiper_vertical_down_animation-leave.swiper_vertical_down_animation-leave-active
+  transform translateY(-50vh)
+  transition transform  300ms ease-in
 
 

@@ -11,7 +11,7 @@ class Page2 extends React.Component {
     render() {
         return(
             <div className={'didi_img'}>
-                <img src={Img} className={'didi_img_content'}/>
+                <img src={Img} className={'didi_img_content'} draggable={false}/>
             </div>
         );
     }

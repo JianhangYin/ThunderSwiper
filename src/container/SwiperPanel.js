@@ -11,7 +11,8 @@ class SwiperPanel extends React.Component {
         return (
             <div>
                 <ThunderSwiper
-                    swapPageTotalNumber={3}
+                    swipePageTotalNumber={3}
+                    swiperType={'vertical'}
                 />
             </div>
         );
