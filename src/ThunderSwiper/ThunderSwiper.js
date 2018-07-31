@@ -159,7 +159,7 @@ class ThunderSwiper extends React.Component {
                             {this.ifMove ? this.switchPageFunction(this.state.swipePageNumber - 1) : null}
                         </div>
                         <ReactCSSTransitionGroup
-                            transitionName={this.sumY < 0 ? 'swiper_vertical_up_animation' : 'swiper_vertical_down_animation'}
+                            transitionName={this.sumY > 0 ? 'swiper_vertical_up_animation' : 'swiper_vertical_down_animation'}
                             transitionEnterTimeout={300}
                             transitionLeaveTimeout={300}
                         >
