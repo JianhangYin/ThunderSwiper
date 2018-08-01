@@ -1,10 +1,16 @@
 /**   dependencies   */
 import React from 'react';
 import PropTypes from 'prop-types';
+import Modal from 'react-modal';
 import ReactCSSTransitionGroup  from 'react-addons-css-transition-group';
 
 /**    StyleSheet    */
 import './ThunderSwiper.styl';
+
+/**       img        */
+import left_arrow from './Img/left-arrow.png';
+import right_arrow from './Img/right-arrow.png';
+import close_button from './Img/close.png';
 
 /**   SubComponent   */
 import * as Content from './ComponentList';
@@ -176,8 +182,7 @@ class ThunderSwiper extends React.Component {
         }else if(event === 'navigation') {
             return(
                 <div className={'thunder_swiper'}>
-                    <div className={'thunder_swiper_previous'} onMouseDown={this.clickPreviousButton}>
-                    </div>
+                    <img src={left_arrow} className={'thunder_swiper_previous'} onMouseDown={this.clickPreviousButton}/>
                     <div className={'thunder_swiper_content_navigation'}>
                         <ReactCSSTransitionGroup
                             transitionName='swiper_navigation_animation'
@@ -189,8 +194,12 @@ class ThunderSwiper extends React.Component {
                             </div>
                         </ReactCSSTransitionGroup>
                     </div>
-                    <div className={'thunder_swiper_next'} onMouseDown={this.clickNextButton}>
-                    </div>
+                    {
+                        this.state.swipePageNumber === this.props.swipePageTotalNumber
+                        &&
+                        <img src={close_button} className={'thunder_swiper_close'} onMouseDown={this.props.isCloseSwiper}/>
+                    }
+                    <img src={right_arrow} className={'thunder_swiper_next'} onMouseDown={this.clickNextButton}/>
                 </div>
             );
         }
@@ -198,14 +207,14 @@ class ThunderSwiper extends React.Component {
 
     render() {
         const {
+            isOpenSwiper,
             swiperType
         } = this.props;
 
-
         return(
-          <div className={'container'}>
-              {this.swiperTypeSelect(swiperType)}
-          </div>
+            <Modal className={'container'} isOpen={isOpenSwiper}>
+                {this.swiperTypeSelect(swiperType)}
+            </Modal>
         );
     }
 
@@ -217,6 +226,14 @@ ThunderSwiper.defaultProps = {
 
 
 ThunderSwiper.propTypes = {
+    /**
+     * Open this swiper or not
+     */
+    isOpenSwiper: PropTypes.bool,
+    /**
+     * control switch button
+     */
+    isCloseSwiper: PropTypes.func.isRequired,
     /**
      * Number of the components included in this swiper
      */

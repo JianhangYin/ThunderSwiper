@@ -71,26 +71,57 @@
 
   &_previous
     position absolute
-    top 0
-    left 0
-    width 10%
-    height 100%
-    background red
+    top 40%
+    left 2%
+    width 7%
+    height 20%
+    -moz-user-select none
+    -ms-user-select none
+    -webkit-user-select none
+    -o-user-select none
+    user-select none
+
+    &:hover
+      transform scale(0.9)
+    &:active
+      transform scale(1.1)
+      transition transform 100ms
+
 
   &_content_navigation
     position absolute
     left 10%
     width 80%
     height 100%
-    background white
+    background yellow
+
+  &_close
+    position absolute
+    width 5%
+    height 10%
+    top -5%
+    right 7.5%
+
+    &:hover
+      transform scale(0.9)
 
   &_next
     position absolute
-    top 0
-    right 0
-    width 10%
-    height 100%
-    background red
+    top 40%
+    right 2%
+    width 7%
+    height 20%
+    -moz-user-select none
+    -ms-user-select none
+    -webkit-user-select none
+    -o-user-select none
+    user-select none
+
+    &:hover
+      transform scale(0.9)
+    &:active
+      transform scale(1.1)
+      transition transform 100ms
 
 .swiper_navigation_animation-enter
   opacity 0
