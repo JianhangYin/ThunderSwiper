@@ -208,11 +208,18 @@ class ThunderSwiper extends React.Component {
     render() {
         const {
             isOpenSwiper,
+            isCloseSwiper,
             swiperType
         } = this.props;
 
         return(
-            <Modal className={'container'} isOpen={isOpenSwiper}>
+            <Modal
+                className={'container'}
+                isOpen={isOpenSwiper}
+                onRequestClose={isCloseSwiper}
+                shouldCloseOnOverlayClick={false}
+                shouldCloseOnEsc={false}
+            >
                 {this.swiperTypeSelect(swiperType)}
             </Modal>
         );
@@ -229,7 +236,7 @@ ThunderSwiper.propTypes = {
     /**
      * Open this swiper or not
      */
-    isOpenSwiper: PropTypes.bool,
+    isOpenSwiper: PropTypes.bool.isRequired,
     /**
      * control switch button
      */
