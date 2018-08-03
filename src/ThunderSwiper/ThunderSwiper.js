@@ -34,6 +34,9 @@ class ThunderSwiper extends React.Component {
         window.onmousedown = this.onMouseDown;
         window.onmouseup = this.onMouseUp;
         window.onmousemove = this.onMouseMove;
+        window.ontouchstart = this.onTouchStart;
+        window.ontouchend = this.onTouchEnd;
+        window.ontouchmove = this.onTouchMove;
     }
 
     componentWillMount() {
@@ -71,20 +74,62 @@ class ThunderSwiper extends React.Component {
     }
 
     onMouseMove = (event) => {
-        if(this.ifMove && this.props.swiperType === 'default') {
+        if(this.ifMove && this.props.swiperType === 'web_horizontal') {
             this.deltaX = this.previousX - event.clientX;
             this.sumX += this.deltaX;
             this.setState({
                 translateX: this.state.translateX - this.deltaX
             });
             this.previousX = event.clientX;
-        } else if(this.ifMove && this.props.swiperType === 'vertical') {
+
+        } else if(this.ifMove && this.props.swiperType === 'web_vertical') {
             this.deltaY = this.previousY - event.clientY;
             this.sumY += this.deltaY;
             this.setState({
                 translateY: this.state.translateY - this.deltaY
             });
             this.previousY = event.clientY;
+        }
+    }
+
+    /**
+     * Touch event
+     */
+    onTouchStart = (event) => {
+        event.stopPropagation();
+        this.ifMove = true;
+        this.previousX = event.touches[0].clientX;
+        this.previousY = event.touches[0].clientY;
+        this.sumX = 0;
+        this.sumY = 0;
+    }
+    onTouchEnd = () => {
+        if(this.sumX > 100 || this.sumY > 100) {
+            this.swipePageNumberFunction('next');
+        } else if(this.sumX < -100 || this.sumY < -100) {
+            this.swipePageNumberFunction('previous');
+        }
+        this.ifMove = false;
+        this.setState({
+            translateX: 0,
+            translateY: 0
+        });
+    }
+    onTouchMove = (event) => {
+        if(this.ifMove && this.props.swiperType === 'wap_horizontal') {
+            this.deltaX = this.previousX - event.touches[0].clientX;
+            this.sumX += this.deltaX;
+            this.setState({
+                translateX: this.state.translateX - this.deltaX
+            });
+            this.previousX = event.touches[0].clientX;
+        } else if(this.ifMove && this.props.swiperType === 'wap_vertical') {
+            this.deltaY = this.previousY - event.touches[0].clientY;
+            this.sumY += this.deltaY;
+            this.setState({
+                translateY: this.state.translateY - this.deltaY
+            });
+            this.previousY = event.touches[0].clientY;
         }
     }
 
@@ -135,45 +180,45 @@ class ThunderSwiper extends React.Component {
      * @returns {*}
      */
     swiperTypeSelect = (event) => {
-        if(event === 'default') {
+        if(event === 'web_horizontal' || event === 'wap_horizontal') {
             return(
                 <div className={'thunder_swiper'}>
-                    <div className={'thunder_swiper_content_default'} style={{transform: `translateX(${this.state.translateX}px)`}}>
-                        <div className={'thunder_swiper_content_default_previous'}>
+                    <div className={'thunder_swiper_content_' + event} style={{transform: `translateX(${this.state.translateX}px)`}}>
+                        <div className={'thunder_swiper_content_' + event + '_previous'}>
                             {this.ifMove ? this.switchPageFunction(this.state.swipePageNumber - 1) : null}
                         </div>
                         <ReactCSSTransitionGroup
-                            transitionName={this.sumX > 0 ? 'swiper_default_left_animation' : 'swiper_default_right_animation'}
+                            transitionName={this.sumX > 0 ? 'swiper_' + event + '_left_animation' : 'swiper_' + event + '_right_animation'}
                             transitionEnterTimeout={300}
                             transitionLeaveTimeout={300}
                         >
-                        <div className={'thunder_swiper_content_default_current'} key = {this.state.swipePageNumber}>
+                        <div className={'thunder_swiper_content_' + event + '_current'} key = {this.state.swipePageNumber}>
                             {this.switchPageFunction(this.state.swipePageNumber)}
                         </div>
                         </ReactCSSTransitionGroup>
-                        <div className={'thunder_swiper_content_default_next'}>
+                        <div className={'thunder_swiper_content_' + event +'_next'}>
                             {this.ifMove ? this.switchPageFunction(this.state.swipePageNumber + 1) : null}
                         </div>
                     </div>
                 </div>
             );
-        } else if(event === 'vertical') {
+        } else if(event === 'web_vertical' || event === 'wap_vertical') {
             return(
                 <div className={'thunder_swiper'}>
-                    <div className={'thunder_swiper_content_vertical'} style={{transform: `translateY(${this.state.translateY}px)`}}>
-                        <div className={'thunder_swiper_content_vertical_previous'}>
+                    <div className={'thunder_swiper_content_' + event} style={{transform: `translateY(${this.state.translateY}px)`}}>
+                        <div className={'thunder_swiper_content_' + event + '_previous'}>
                             {this.ifMove ? this.switchPageFunction(this.state.swipePageNumber - 1) : null}
                         </div>
                         <ReactCSSTransitionGroup
-                            transitionName={this.sumY > 0 ? 'swiper_vertical_up_animation' : 'swiper_vertical_down_animation'}
+                            transitionName={this.sumY > 0 ? 'swiper_' + event + '_up_animation' : 'swiper_' + event + '_down_animation'}
                             transitionEnterTimeout={300}
                             transitionLeaveTimeout={300}
                         >
-                            <div className={'thunder_swiper_content_vertical_current'} key = {this.state.swipePageNumber}>
+                            <div className={'thunder_swiper_content_' + event + '_current'} key = {this.state.swipePageNumber}>
                                 {this.switchPageFunction(this.state.swipePageNumber)}
                             </div>
                         </ReactCSSTransitionGroup>
-                        <div className={'thunder_swiper_content_vertical_next'}>
+                        <div className={'thunder_swiper_content_' + event +'_next'}>
                             {this.ifMove ? this.switchPageFunction(this.state.swipePageNumber + 1) : null}
                         </div>
                     </div>
@@ -182,7 +227,7 @@ class ThunderSwiper extends React.Component {
         }else if(event === 'navigation') {
             return(
                 <div className={'thunder_swiper'}>
-                    <img src={left_arrow} className={'thunder_swiper_previous'} onMouseDown={this.clickPreviousButton}/>
+                    <img src={left_arrow} className={'thunder_swiper_previous'} alt={'previous'} onMouseDown={this.clickPreviousButton}/>
                     <div className={'thunder_swiper_content_navigation'}>
                         <ReactCSSTransitionGroup
                             transitionName='swiper_navigation_animation'
@@ -197,9 +242,9 @@ class ThunderSwiper extends React.Component {
                     {
                         this.state.swipePageNumber === this.props.swipePageTotalNumber
                         &&
-                        <img src={close_button} className={'thunder_swiper_close'} onMouseDown={this.props.isCloseSwiper}/>
+                        <img src={close_button} className={'thunder_swiper_close'} alt={'close'} onMouseDown={this.props.isCloseSwiper}/>
                     }
-                    <img src={right_arrow} className={'thunder_swiper_next'} onMouseDown={this.clickNextButton}/>
+                    <img src={right_arrow} className={'thunder_swiper_next'} alt={'next'} onMouseDown={this.clickNextButton}/>
                 </div>
             );
         }
@@ -228,7 +273,7 @@ class ThunderSwiper extends React.Component {
 }
 
 ThunderSwiper.defaultProps = {
-    swiperType: 'default'
+    swiperType: 'navigation'
 }
 
 

@@ -17,7 +17,7 @@ class SwiperPanel extends React.Component {
         });
     }
 
-    swithButtonClose = () => {
+    switchButtonClose = () => {
         this.setState({
             isOpen: false
         })
@@ -33,9 +33,9 @@ class SwiperPanel extends React.Component {
                 <input type={'submit'} value={'Click to open swiper'} onClick={this.switchButtonOpen}/>
                 <ThunderSwiper
                     isOpenSwiper={isOpen}
-                    isCloseSwiper={this.swithButtonClose}
+                    isCloseSwiper={this.switchButtonClose}
                     swipePageTotalNumber={3}
-                    swiperType={'navigation'}
+                    swiperType={'web_vertical'}
                 />
             </div>
         );
