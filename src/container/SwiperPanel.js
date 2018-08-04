@@ -35,7 +35,7 @@ class SwiperPanel extends React.Component {
                     isOpenSwiper={isOpen}
                     isCloseSwiper={this.switchButtonClose}
                     swipePageTotalNumber={3}
-                    swiperType={'web_vertical'}
+                    swiperType={'navigation'}
                 />
             </div>
         );

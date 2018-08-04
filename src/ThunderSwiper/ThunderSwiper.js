@@ -180,51 +180,7 @@ class ThunderSwiper extends React.Component {
      * @returns {*}
      */
     swiperTypeSelect = (event) => {
-        if(event === 'web_horizontal' || event === 'wap_horizontal') {
-            return(
-                <div className={'thunder_swiper'}>
-                    <div className={'thunder_swiper_content_' + event} style={{transform: `translateX(${this.state.translateX}px)`}}>
-                        <div className={'thunder_swiper_content_' + event + '_previous'}>
-                            {this.ifMove ? this.switchPageFunction(this.state.swipePageNumber - 1) : null}
-                        </div>
-                        <ReactCSSTransitionGroup
-                            transitionName={this.sumX > 0 ? 'swiper_' + event + '_left_animation' : 'swiper_' + event + '_right_animation'}
-                            transitionEnterTimeout={300}
-                            transitionLeaveTimeout={300}
-                        >
-                        <div className={'thunder_swiper_content_' + event + '_current'} key = {this.state.swipePageNumber}>
-                            {this.switchPageFunction(this.state.swipePageNumber)}
-                        </div>
-                        </ReactCSSTransitionGroup>
-                        <div className={'thunder_swiper_content_' + event +'_next'}>
-                            {this.ifMove ? this.switchPageFunction(this.state.swipePageNumber + 1) : null}
-                        </div>
-                    </div>
-                </div>
-            );
-        } else if(event === 'web_vertical' || event === 'wap_vertical') {
-            return(
-                <div className={'thunder_swiper'}>
-                    <div className={'thunder_swiper_content_' + event} style={{transform: `translateY(${this.state.translateY}px)`}}>
-                        <div className={'thunder_swiper_content_' + event + '_previous'}>
-                            {this.ifMove ? this.switchPageFunction(this.state.swipePageNumber - 1) : null}
-                        </div>
-                        <ReactCSSTransitionGroup
-                            transitionName={this.sumY > 0 ? 'swiper_' + event + '_up_animation' : 'swiper_' + event + '_down_animation'}
-                            transitionEnterTimeout={300}
-                            transitionLeaveTimeout={300}
-                        >
-                            <div className={'thunder_swiper_content_' + event + '_current'} key = {this.state.swipePageNumber}>
-                                {this.switchPageFunction(this.state.swipePageNumber)}
-                            </div>
-                        </ReactCSSTransitionGroup>
-                        <div className={'thunder_swiper_content_' + event +'_next'}>
-                            {this.ifMove ? this.switchPageFunction(this.state.swipePageNumber + 1) : null}
-                        </div>
-                    </div>
-                </div>
-            );
-        }else if(event === 'navigation') {
+        if(event === 'navigation') {
             return(
                 <div className={'thunder_swiper'}>
                     <img src={left_arrow} className={'thunder_swiper_previous'} alt={'previous'} onMouseDown={this.clickPreviousButton}/>
@@ -245,6 +201,46 @@ class ThunderSwiper extends React.Component {
                         <img src={close_button} className={'thunder_swiper_close'} alt={'close'} onMouseDown={this.props.isCloseSwiper}/>
                     }
                     <img src={right_arrow} className={'thunder_swiper_next'} alt={'next'} onMouseDown={this.clickNextButton}/>
+                </div>
+            );
+        } else {
+            return(
+                <div className={'thunder_swiper_' + event}>
+                    <div
+                        className={'thunder_swiper_' + event + '_content'}
+                        style={
+                            /horizontal/i.test(event) ?
+                                {transform: `translateX(${this.state.translateX}px)`}
+                                :
+                                {transform: `translateY(${this.state.translateY}px)`}
+                        }
+                    >
+                        <div className={'thunder_swiper_' + event + '_content_previous'}>
+                            {this.ifMove ? this.switchPageFunction(this.state.swipePageNumber - 1) : null}
+                        </div>
+                        <ReactCSSTransitionGroup
+                            transitionName={
+                                /horizontal/i.test(event) ?
+                                    (this.sumX > 0 ?
+                                        'swiper_' + event + '_left_animation'
+                                        :
+                                        'swiper_' + event + '_right_animation')
+                                    :
+                                    (this.sumY > 0 ?
+                                        'swiper_' + event + '_up_animation'
+                                        :
+                                        'swiper_' + event + '_down_animation')}
+                            transitionEnterTimeout={300}
+                            transitionLeaveTimeout={300}
+                        >
+                            <div className={'thunder_swiper_' + event + '_content_current'} key = {this.state.swipePageNumber}>
+                                {this.switchPageFunction(this.state.swipePageNumber)}
+                            </div>
+                        </ReactCSSTransitionGroup>
+                        <div className={'thunder_swiper_' + event +'_content_next'}>
+                            {this.ifMove ? this.switchPageFunction(this.state.swipePageNumber + 1) : null}
+                        </div>
+                    </div>
                 </div>
             );
         }
@@ -292,9 +288,11 @@ ThunderSwiper.propTypes = {
     swipePageTotalNumber: PropTypes.number.isRequired,
     /**
      * Type of the swiper:
-     * 'default'
-     * 'vertical'
      * 'navigation'
+     * 'web_horizontal'
+     * 'web_vertical'
+     * 'wap_horizontal'
+     * 'wap_vertical'
      */
     swiperType: PropTypes.string
 }
