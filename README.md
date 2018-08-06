@@ -27,14 +27,19 @@
 
 ## Example
 1. Navigation Swiper
+
     ![img](./src/Material/navigation.gif)
 2. Web Horizontal Swiper
+
     ![img](./src/Material/web_horizontal.gif)
 3. Web Vertical Swiper
+
     ![img](./src/Material/web_vertical.gif)
 4. Wap Horizontal Swiper
+
     ![img](./src/Material/wap_horizontal.gif)
 5. Wap vertical Swiper
+
     ![img](./src/Material/wap_vertical.gif)
 
 
