@@ -12,9 +12,6 @@ import left_arrow from './Img/left-arrow.png';
 import right_arrow from './Img/right-arrow.png';
 import close_button from './Img/close.png';
 
-/**   SubComponent   */
-import * as Content from './ComponentList';
-
 class ThunderSwiper extends React.Component {
 
     constructor(props) {
@@ -39,12 +36,17 @@ class ThunderSwiper extends React.Component {
         window.ontouchmove = this.onTouchMove;
     }
 
-    componentWillMount() {
-        Object.keys(Content).forEach(
-            (value) => {
-                this.contentPageArray.push(Content[value]);
-            }
-        )
+    componentDidMount() {
+        import(`${this.props.moduleImported}`)
+            .then(
+                Content => {
+                    Object.keys(Content).forEach(
+                        (value) => {
+                            this.contentPageArray.push(Content[value]);
+                        }
+                    )
+                }
+            )
     }
 
     /**
@@ -294,7 +296,11 @@ ThunderSwiper.propTypes = {
      * 'wap_horizontal'
      * 'wap_vertical'
      */
-    swiperType: PropTypes.string
+    swiperType: PropTypes.string,
+    /**
+     * the path of module imported in the swiper
+     */
+    moduleImported: PropTypes.string.isRequired
 }
 
 export default ThunderSwiper;
