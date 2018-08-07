@@ -17,12 +17,13 @@
         Page2 as Component2,                      <br/>
         Page3 as Component3                       <br/>
     }                                             <br/> 
-2. import ThunderSwiper.js and use it in the parent component.
+2. use it in the parent component.
     ><ThunderSwiper                               <br/>
         isOpenSwiper={isOpen}                     <br/>
         isCloseSwiper={this.switchButtonClose}    <br/>
         swipePageTotalNumber={3}                  <br/>
         swiperType={'navigation'}                 <br/>
+        moduleImported={path of ComponentList.js} <br/>
         />                                        <br/>
 
 ## Example
