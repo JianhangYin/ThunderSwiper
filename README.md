@@ -1,9 +1,9 @@
 # Thunder Swiper
 
 ## Feature
-1. swipe the JS element in your page
-2. button click, mouse event and touch event are supported (web and wap)
-3. flexible
+1. An great tool displaying the react components on the swiper.
+2. Both web and wap are supported.
+3. 5 types of swiper are available.
 
 ## How to use
 
@@ -17,7 +17,7 @@
         Page2 as Component2,                      <br/>
         Page3 as Component3                       <br/>
     }                                             <br/> 
-2. use it in the parent component.
+2. import the Thunder Swiper into the parent component and use it with the proper parameters.
     ><ThunderSwiper                               <br/>
         isOpenSwiper={isOpen}                     <br/>
         isCloseSwiper={this.switchButtonClose}    <br/>
@@ -25,23 +25,11 @@
         swiperType={'navigation'}                 <br/>
         moduleImported={path of ComponentList.js} <br/>
         />                                        <br/>
-
+3. Rock and Roll!
 ## Example
 1. Navigation Swiper
 
-    ![img](./src/Material/navigation.gif)
-2. Web Horizontal Swiper
-
-    ![img](./src/Material/web_horizontal.gif)
-3. Web Vertical Swiper
-
-    ![img](./src/Material/web_vertical.gif)
-4. Wap Horizontal Swiper
-
-    ![img](./src/Material/wap_horizontal.gif)
-5. Wap vertical Swiper
-
-    ![img](./src/Material/wap_vertical.gif)
+    ![img](./public/Img/example.gif)
 
 
 
