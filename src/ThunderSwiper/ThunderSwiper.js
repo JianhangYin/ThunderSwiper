@@ -189,11 +189,16 @@ class ThunderSwiper extends React.Component {
                onMouseDown={this.clickPreviousButton}/>
           <div className={'thunder_swiper_content_navigation'}>
             <ReactCSSTransitionGroup
+              component="section"
               transitionName='swiper_navigation_animation'
               transitionEnterTimeout={300}
               transitionLeaveTimeout={300}
+              style={{height: '100%', width: '100%'}}
             >
-              <div key={this.state.swipePageNumber}>
+              <div
+                key={this.state.swipePageNumber}
+                className={'thunder_swiper_content_navigation_content'}
+              >
                 {this.switchPageFunction(this.state.swipePageNumber)}
               </div>
             </ReactCSSTransitionGroup>
@@ -223,6 +228,7 @@ class ThunderSwiper extends React.Component {
               {this.ifMove ? this.switchPageFunction(this.state.swipePageNumber - 1) : null}
             </div>
             <ReactCSSTransitionGroup
+              component="section"
               transitionName={
                 /horizontal/i.test(event) ?
                   (this.sumX > 0 ?
@@ -236,6 +242,7 @@ class ThunderSwiper extends React.Component {
                     'swiper_' + event + '_down_animation')}
               transitionEnterTimeout={300}
               transitionLeaveTimeout={300}
+              style={{height: '100%', width: '100%'}}
             >
               <div className={'thunder_swiper_' + event + '_content_current'} key={this.state.swipePageNumber}>
                 {this.switchPageFunction(this.state.swipePageNumber)}

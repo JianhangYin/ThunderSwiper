@@ -32,8 +32,19 @@ class SwiperPanel extends React.Component {
       },
     } = this.props;
     return (
-      <div className={'swiper_panel'}>
-        <input type={'submit'} value={'Click to open swiper'} onClick={this.switchButtonOpen}/>
+      <div className={'panel'}>
+        <div className={'panel-header'}>
+          <span>Hello! Welcome to Thunder Swiper!</span>
+          <span>This is a great tool displaying your react component on the swiper!</span>
+          <span>Button click, mouse event and touch event are all supported!</span>
+          <span>Click the button below to test.</span>
+          <div
+            className={'panel-header-button'}
+            onClick={this.switchButtonOpen}
+          >
+            TRY
+          </div>
+        </div>
         <ThunderSwiper
           isOpenSwiper={isOpen}
           isCloseSwiper={this.switchButtonClose}

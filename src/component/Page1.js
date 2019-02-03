@@ -1,21 +1,27 @@
 import React from 'react';
+import Img from '../media/wave.gif';
 import './Page1.styl';
 
 class Page1 extends React.Component {
 
   render() {
+
     return (
-      <div className={'page1_container'}>
-        <h1>
+      <div className={'page-1'}>
+        <div className={'page-1-header'}>
           This is an example of ThunderSwiper
-        </h1>
-        <div className={'page1_container_content'}>
-          <dl>
-            <dt>Feature</dt>
-            <dd>- swipe the JS element in your page</dd>
-            <dd>- both button click and mouse event are supported</dd>
-            <dd>- flexible</dd>
-          </dl>
+        </div>
+        <div className={'page-1-body'}>
+          <img
+            src={Img}
+            draggable={false}
+            alt={'wave'}
+          />
+          <div className={'page-1-body-author'}>
+            <a href="//commons.wikimedia.org/wiki/User:Becarlson">
+              Becarlson
+            </a>
+          </div>
         </div>
       </div>
     );
