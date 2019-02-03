@@ -1,28 +1,31 @@
 import React from 'react';
-import { withRouter } from 'react-router';
-import '../Stylus/Main.styl';
+import { Link } from 'react-router-dom';
+import './Main.styl';
 
 class Main extends React.Component {
-
-    constructor() {
-        super();
-    }
-
-
-    switchTest = () => {
-        this.props.history.push({ pathname: '/test' });
-    }
-
-    render() {
-
-        return (
-            <div className={'main'}>
-                <h1>Press the button to enter the swiper page</h1>
-                <input type={"submit"} value={"ThunderSwiperTest"} onClick={this.switchTest}/>
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div className={'main'}>
+        <div>Press the button to enter the swiper page</div>
+        <Link to={'/navigation'}>
+          <div className={'main-button'}>Navigation</div>
+        </Link>
+        <Link to={'/web_horizontal'}>
+          <div>Web Horizontal</div>
+        </Link>
+        <Link to={'/web_vertical'}>
+          <div>Web Vertical</div>
+        </Link>
+        <Link to={'/wap_horizontal'}>
+          <div>Wap Horizontal</div>
+        </Link>
+        <Link to={'/wap_vertical'}>
+          <div>Wap vertical</div>
+        </Link>
+      </div>
+    );
+  }
 
 }
 
-export default withRouter(Main);
+export default Main;

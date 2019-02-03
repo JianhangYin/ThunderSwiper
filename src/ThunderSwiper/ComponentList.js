@@ -1,6 +1,6 @@
-import Page1 from '../Example/Page1';
-import Page2 from '../Example/Page2';
-import Page3 from '../Example/Page3';
+import Page1 from '../component/Page1';
+import Page2 from '../component/Page2';
+import Page3 from '../component/Page3';
 
 /**
  * This is a component list, importing all the components included in the swaper.
@@ -13,7 +13,7 @@ import Page3 from '../Example/Page3';
  * }
  */
 export {
-    Page1 as Component1,
-    Page2 as Component2,
-    Page3 as Component3
+  Page1 as Component1,
+  Page2 as Component2,
+  Page3 as Component3,
 }
