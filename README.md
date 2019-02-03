@@ -1,5 +1,7 @@
 # Thunder Swiper
 
+![img](./public/Img/example.gif)
+
 ## Feature
 1. An great tool displaying the react components on the swiper.
 2. Both web and wap are supported.
@@ -26,10 +28,6 @@
         moduleImported={path of ComponentList.js} <br/>
         />                                        <br/>
 3. Rock and Roll!
-## Example
-1. Navigation Swiper
-
-    ![img](./public/Img/example.gif)
 
 
 
