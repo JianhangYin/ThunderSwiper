@@ -1,6 +1,6 @@
 import React from 'react';
 import Img from '../media/didi.jpeg';
-import './Page2.styl'
+import './Page2.styl';
 
 class Page2 extends React.Component {
 

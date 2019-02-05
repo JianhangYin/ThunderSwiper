@@ -6,13 +6,13 @@ class Page3 extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      userName: ''
-    }
+      userName: '',
+    };
   }
   inputUserName = (event) => {
     this.setState({
-      userName: event.target.value
-    })
+      userName: event.target.value,
+    });
   };
   render() {
     const {

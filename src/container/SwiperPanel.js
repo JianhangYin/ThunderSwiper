@@ -7,22 +7,22 @@ class SwiperPanel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isOpen: false
+      isOpen: false,
     };
   }
   switchButtonOpen = () => {
     this.setState({
-      isOpen: true
+      isOpen: true,
     });
   };
   switchButtonClose = () => {
     this.setState({
-      isOpen: false
-    })
+      isOpen: false,
+    });
   };
   render() {
     const {
-      isOpen
+      isOpen,
     } = this.state;
     const {
       match: {

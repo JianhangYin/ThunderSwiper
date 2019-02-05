@@ -18,7 +18,7 @@ class ThunderSwiper extends React.Component {
     super(props);
     this.state = {
       swipePageNumber: 1,                            /**    the page number           */
-      translateX: 0                                  /**     distance X moved         */
+      translateX: 0,                                 /**     distance X moved         */
     };
     this.previousX = null;                           /** previous X coordinate        */
     this.previousY = null;                           /** previous Y coordinate        */
@@ -71,7 +71,7 @@ class ThunderSwiper extends React.Component {
     this.ifMove = false;
     this.setState({
       translateX: 0,
-      translateY: 0
+      translateY: 0,
     });
   };
 
@@ -80,7 +80,7 @@ class ThunderSwiper extends React.Component {
       this.deltaX = this.previousX - event.clientX;
       this.sumX += this.deltaX;
       this.setState({
-        translateX: this.state.translateX - this.deltaX
+        translateX: this.state.translateX - this.deltaX,
       });
       this.previousX = event.clientX;
 
@@ -88,7 +88,7 @@ class ThunderSwiper extends React.Component {
       this.deltaY = this.previousY - event.clientY;
       this.sumY += this.deltaY;
       this.setState({
-        translateY: this.state.translateY - this.deltaY
+        translateY: this.state.translateY - this.deltaY,
       });
       this.previousY = event.clientY;
     }
@@ -114,7 +114,7 @@ class ThunderSwiper extends React.Component {
     this.ifMove = false;
     this.setState({
       translateX: 0,
-      translateY: 0
+      translateY: 0,
     });
   };
   onTouchMove = (event) => {
@@ -122,14 +122,14 @@ class ThunderSwiper extends React.Component {
       this.deltaX = this.previousX - event.touches[0].clientX;
       this.sumX += this.deltaX;
       this.setState({
-        translateX: this.state.translateX - this.deltaX
+        translateX: this.state.translateX - this.deltaX,
       });
       this.previousX = event.touches[0].clientX;
     } else if (this.ifMove && this.props.swiperType === 'wap_vertical') {
       this.deltaY = this.previousY - event.touches[0].clientY;
       this.sumY += this.deltaY;
       this.setState({
-        translateY: this.state.translateY - this.deltaY
+        translateY: this.state.translateY - this.deltaY,
       });
       this.previousY = event.touches[0].clientY;
     }
@@ -153,11 +153,11 @@ class ThunderSwiper extends React.Component {
   swipePageNumberFunction = (event) => {
     if (event === 'previous' && this.state.swipePageNumber > 1) {
       this.setState({
-        swipePageNumber: this.state.swipePageNumber - 1
+        swipePageNumber: this.state.swipePageNumber - 1,
       });
     } else if (event === 'next' && this.state.swipePageNumber < this.props.swipePageTotalNumber) {
       this.setState({
-        swipePageNumber: this.state.swipePageNumber + 1
+        swipePageNumber: this.state.swipePageNumber + 1,
       });
     }
   };
@@ -261,7 +261,7 @@ class ThunderSwiper extends React.Component {
     const {
       isOpenSwiper,
       isCloseSwiper,
-      swiperType
+      swiperType,
     } = this.props;
 
     return (
@@ -280,7 +280,7 @@ class ThunderSwiper extends React.Component {
 }
 
 ThunderSwiper.defaultProps = {
-  swiperType: 'navigation'
+  swiperType: 'navigation',
 };
 
 
@@ -309,7 +309,7 @@ ThunderSwiper.propTypes = {
   /**
    * the path of module imported in the swiper
    */
-  moduleImported: PropTypes.string.isRequired
+  moduleImported: PropTypes.string.isRequired,
 };
 
 export default ThunderSwiper;
