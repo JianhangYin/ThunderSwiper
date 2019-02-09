@@ -38,10 +38,10 @@
 
 ## Props
 
-| name | definition | default |
-| :---: | :----: | :---: |
-| isOpenSwiper | Open this swiper or not | |
-| isCloseSwiper  | Control switch button | |
-| swipePageTotalNumber | Number of the components | |
-| swiperType | Type of the swiper | 'navigation' |
-| moduleImported | Modules imported in the swiper | |
+| name | definition | default | type |
+| :---: | :----: | :---: | :---: |
+| isOpenSwiper | Open this swiper or not | - | bool |
+| isCloseSwiper  | Control switch button | - | func |
+| swipePageTotalNumber | Number of the components | - | number |
+| swiperType | Type of the swiper | 'navigation' | string |
+| moduleImported | Modules imported in the swiper | - | string |
